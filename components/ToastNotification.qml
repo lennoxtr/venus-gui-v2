@@ -31,28 +31,32 @@ Item {
 	}
 
 	function _buttonClicked() {
-		if (isSilenceButton) {
-			// Silence all similar or lower-level notifications by acknowledging them.
-			// Do NOT acknowledge Info notifications, as they don't buzz, and we
-			// still want the user to see the number of outstanding notifications
-			// in the Notifications navbar icon bubble number.
-			if (root.type === VenusOS.Notification_Alarm) {
-				NotificationModel.acknowledgeType(VenusOS.Notification_Alarm)
-				NotificationModel.acknowledgeType(VenusOS.Notification_Warning)
-			} else {
-				NotificationModel.acknowledgeType(VenusOS.Notification_Warning)
-			}
-		}
+    	console.log("========== KHANG BUTTON CLICK ==========")
+    	console.log("KHANG: notificationModelId =", root.notificationModelId)
+    	console.log("KHANG: toastModelId =", root.toastModelId)
+    	console.log("KHANG: type =", root.type)
 
-		if (root.type === VenusOS.Notification_Info) {
-			// for Info toasts, remove from the toast model (but do NOT acknowledge) all Info toasts.
-			// This ensures that if something generates a hundred Info toasts in a row the user
-			// doesn't have to manually dismiss them all, but can still see the number of
-			// unacknowledged notifications in the Notifications navbar icon bubble number.
-			ToastModel.removeAllInfoExcept(root.toastModelId)
-		}
+    	if (isSilenceButton) {
+        	console.log("KHANG: BEFORE acknowledge()")
 
-		root.dismissed()
+        	NotificationModel.acknowledge(root.notificationModelId)
+
+        	console.log("KHANG: AFTER acknowledge()")
+    	}
+
+    	if (root.type === VenusOS.Notification_Info) {
+        	console.log("KHANG: BEFORE removeAllInfoExcept()")
+
+        	ToastModel.removeAllInfoExcept(root.toastModelId)
+
+        	console.log("KHANG: AFTER removeAllInfoExcept()")
+    	}
+
+    	console.log("KHANG: BEFORE root.dismissed()")
+
+    	root.dismissed()
+
+    	console.log("KHANG: AFTER root.dismissed()")
 	}
 
 	signal dismissed()
@@ -158,6 +162,7 @@ Item {
 
 			SilenceAlarmButton {
 				id: silenceButton
+				text: CommonWords.acknowledge_single_alarm
 
 				color: Theme.color_toastNotification_foreground
 				flat: true

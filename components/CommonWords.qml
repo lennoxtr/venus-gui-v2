@@ -520,6 +520,12 @@ QtObject {
 	//% "Silence alarm"
 	readonly property string silence_alarm: qsTrId("common_words_silence_alarm")
 
+	//% "Acknowledge alarm"
+	readonly property string acknowledge_single_alarm: qsTrId("common_words_acknowledge_single_alarm")
+
+	//% "Acknowledge all alarm"
+	readonly property string acknowledge_all_alarm: qsTrId("common_words_acknowledge_all_alarm")
+
 	//: State of charge (as a percentage). %1 = the SOC value
 	//% "SOC %1"
 	readonly property string soc_with_prefix: qsTrId("common_words_soc")

@@ -126,6 +126,23 @@ Window {
 		}
 	}
 
+	Loader {
+		id: toastNotificationLoader
+
+		// For when GUI reloads or when Venus Platform reloads
+		readonly property bool backendReady: Global.dataManagerLoaded && SystemServiceListener.settingsOnline
+
+		
+		asynchronous: true
+
+		active: false
+
+		onBackEndReadyChanged: {
+			
+		}
+		sourceComponent: "pages/NotificationLayer.qml"
+	}
+
 	contentItem {
 		// show the GUI always centered in the window
 		transformOrigin: Item.Center

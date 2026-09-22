@@ -14,6 +14,21 @@ Item {
 
 	property bool animationEnabled: Global.animationEnabled
 
+	//function reload() {
+	//	let totalRows = NotificationModel.count
+
+	//	for (let i = 0; i < totalRows; i++) {
+	//		let entry = NotificationModel.at(i)
+	//		if (entry && entry.active && !entry.acknowledged) {
+	//				ToastModel.addNotification(
+	//					entry.modelId ,
+	//					entry.type,
+	//					"" + entry.deviceName + "\n" + entry.description)
+	//		}
+	//	}
+	//}
+
+
 	property Connections _toastController: Connections {
 		id: toastController
 		target: NotificationModel
@@ -139,10 +154,22 @@ Item {
 				type: toastContainer.type
 
 				onDismissed: {
-					if (toastContainer.notificationModelId !== 0 && type !== VenusOS.Notification_Info) {
-						NotificationModel.acknowledge(toastContainer.notificationModelId)
-					}
-					ToastModel.remove(toastContainer.modelId)
+    				console.log("========== KHANG onDismissed ==========")
+    				console.log("KHANG: notificationModelId =", toastContainer.notificationModelId)
+    				console.log("KHANG: modelId =", toastContainer.modelId)
+    				console.log("KHANG: type =", type)
+
+    				if (toastContainer.notificationModelId !== 0 && type !== VenusOS.Notification_Info) {
+        				console.log("KHANG: onDismissed -> acknowledge(",
+                    				toastContainer.notificationModelId, ")")
+
+        				NotificationModel.acknowledge(toastContainer.notificationModelId)
+    				}
+
+    				console.log("KHANG: onDismissed -> ToastModel.remove(",
+                					toastContainer.modelId, ")")
+
+    				ToastModel.remove(toastContainer.modelId)
 				}
 
 				onClosed: {

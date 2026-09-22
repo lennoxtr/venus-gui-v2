@@ -1,0 +1,92 @@
+2026-09-20 15:23:16,982 - aqt.main - INFO - installer 137264985186304 aqtinstall(aqt) v3.3.0 on Python 3.10.12 [CPython GCC 11.4.0]
+2026-09-20 15:23:16,983 - aqt.helper - DEBUG - helper 137264985186304 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/Updates.xml.sha256
+2026-09-20 15:23:24,139 - aqt.helper - DEBUG - helper 137264985186304 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/linux_x64/extensions/qtwebengine/683/x86_64/Updates.xml.sha256
+2026-09-20 15:23:29,712 - aqt.archives - INFO - archives 137264985186304 Found extension qtwebengine
+2026-09-20 15:23:29,713 - aqt.helper - DEBUG - helper 137264985186304 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/linux_x64/extensions/qtpdf/683/x86_64/Updates.xml.sha256
+2026-09-20 15:23:35,846 - aqt.archives - INFO - archives 137264985186304 Found extension qtpdf
+2026-09-20 15:23:35,856 - aqt.main - ERROR - installer 137264985186304 The packages ['qt5compat', 'qt_base', 'qtshadertools', 'qtwebsockets'] were not found while parsing XML of package information!
+==============================Suggested follow-up:==============================
+* Please use 'aqt list-qt linux desktop --arch 6.8.3' to show architectures available.
+* Please use 'aqt list-qt linux desktop --modules 6.8.3 <arch>' to show modules available.
+2026-09-20 15:23:53,811 - aqt.main - INFO - installer 134412284145664 aqtinstall(aqt) v3.3.0 on Python 3.10.12 [CPython GCC 11.4.0]
+2026-09-20 15:23:53,815 - aqt.main - INFO - installer 134412284145664 Found installed linux-desktop Qt at /opt/venus/build-gx-hostedtoolcache/Qt/6.8.3/gcc_64
+2026-09-20 15:23:53,816 - aqt.helper - DEBUG - helper 134412284145664 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683_wasm_singlethread/Updates.xml.sha256
+2026-09-20 15:23:55,724 - aqt.helper - DEBUG - helper 134412284145664 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683_wasm_singlethread/Updates.xml.sha256
+2026-09-20 15:23:59,309 - aqt.helper - DEBUG - helper 134412284145664 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683_wasm_singlethread/Updates.xml.sha256
+2026-09-20 15:24:00,838 - aqt.helper - DEBUG - helper 134412284145664 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683_wasm_singlethread/Updates.xml.sha256
+2026-09-20 15:24:03,417 - aqt.helper - DEBUG - helper 134412284145664 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683_wasm_singlethread/Updates.xml.sha256
+2026-09-20 15:24:04,590 - aqt.archives - WARNING - archives 134412284145664 Failed to download checksum for the file 'online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683_wasm_singlethread/Updates.xml'. This may happen on unofficial mirrors.
+2026-09-20 15:24:06,128 - aqt.main - ERROR - installer 134412284145664 Failed to locate XML data for Qt version '6.8.3'.
+==============================Suggested follow-up:==============================
+* Please use 'aqt list-qt linux desktop' to show versions available.
+2026-09-20 15:25:22,056 - aqt.main - INFO - installer 129221686308864 aqtinstall(aqt) v3.3.0 on Python 3.10.12 [CPython GCC 11.4.0]
+2026-09-20 15:25:22,057 - aqt.main - INFO - installer 129221686308864 Found installed linux-desktop Qt at /opt/venus/build-gx-hostedtoolcache/Qt/6.8.3/gcc_64
+2026-09-20 15:25:22,058 - aqt.helper - DEBUG - helper 129221686308864 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/wasm/qt6_683/qt6_683_wasm_singlethread/Updates.xml.sha256
+2026-09-20 15:25:25,222 - aqt.helper - DEBUG - helper 129221686308864 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/extensions/qtwebengine/683/wasm_singlethread/Updates.xml.sha256
+2026-09-20 15:25:30,902 - aqt.helper - DEBUG - helper 129221686308864 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/extensions/qtwebengine/683/wasm_singlethread/Updates.xml.sha256
+2026-09-20 15:25:32,843 - aqt.helper - DEBUG - helper 129221686308864 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/extensions/qtwebengine/683/wasm_singlethread/Updates.xml.sha256
+2026-09-20 15:25:34,158 - aqt.helper - DEBUG - helper 129221686308864 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/extensions/qtwebengine/683/wasm_singlethread/Updates.xml.sha256
+2026-09-20 15:25:37,720 - aqt.helper - DEBUG - helper 129221686308864 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/extensions/qtwebengine/683/wasm_singlethread/Updates.xml.sha256
+2026-09-20 15:25:39,371 - aqt.helper - DEBUG - helper 129221686308864 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/extensions/qtpdf/683/wasm_singlethread/Updates.xml.sha256
+2026-09-20 15:25:42,726 - aqt.helper - DEBUG - helper 129221686308864 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/extensions/qtpdf/683/wasm_singlethread/Updates.xml.sha256
+2026-09-20 15:25:44,251 - aqt.helper - DEBUG - helper 129221686308864 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/extensions/qtpdf/683/wasm_singlethread/Updates.xml.sha256
+2026-09-20 15:25:45,886 - aqt.helper - DEBUG - helper 129221686308864 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/extensions/qtpdf/683/wasm_singlethread/Updates.xml.sha256
+2026-09-20 15:25:47,538 - aqt.helper - DEBUG - helper 129221686308864 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/extensions/qtpdf/683/wasm_singlethread/Updates.xml.sha256
+2026-09-20 15:25:50,759 - aqt.helper - DEBUG - helper 125827492184064 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/wasm/qt6_683/qt6_683_wasm_singlethread/qt.qt6.683.wasm_singlethread/6.8.3-0-202503201334qtbase-Windows-Windows_10_22H2-Clang-Windows-WebAssembly-X86_64.7z.sha256
+2026-09-20 15:25:50,759 - aqt.helper - DEBUG - helper 123133804355584 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/wasm/qt6_683/qt6_683_wasm_singlethread/qt.qt6.683.wasm_singlethread/6.8.3-0-202503201334qtsvg-Windows-Windows_10_22H2-Clang-Windows-WebAssembly-X86_64.7z.sha256
+2026-09-20 15:25:50,761 - aqt.helper - DEBUG - helper 136627263090688 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/wasm/qt6_683/qt6_683_wasm_singlethread/qt.qt6.683.wasm_singlethread/6.8.3-0-202503201334qtdeclarative-Windows-Windows_10_22H2-Clang-Windows-WebAssembly-X86_64.7z.sha256
+2026-09-20 15:25:50,763 - aqt.helper - DEBUG - helper 130205926813696 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/wasm/qt6_683/qt6_683_wasm_singlethread/qt.qt6.683.wasm_singlethread/6.8.3-0-202503201334qttools-Windows-Windows_10_22H2-Clang-Windows-WebAssembly-X86_64.7z.sha256
+2026-09-20 15:25:56,009 - aqt.helper - INFO - helper 123133804355584 Downloading qtsvg...
+2026-09-20 15:25:56,009 - aqt.installer - DEBUG - installer 123133804355584 Download URL: https://download.qt.io/online/qtsdkrepository/all_os/wasm/qt6_683/qt6_683_wasm_singlethread/qt.qt6.683.wasm_singlethread/6.8.3-0-202503201334qtsvg-Windows-Windows_10_22H2-Clang-Windows-WebAssembly-X86_64.7z
+2026-09-20 15:25:56,043 - aqt.helper - INFO - helper 130205926813696 Downloading qttools...
+2026-09-20 15:25:56,045 - aqt.helper - INFO - helper 136627263090688 Downloading qtdeclarative...
+2026-09-20 15:25:56,043 - aqt.installer - DEBUG - installer 130205926813696 Download URL: https://download.qt.io/online/qtsdkrepository/all_os/wasm/qt6_683/qt6_683_wasm_singlethread/qt.qt6.683.wasm_singlethread/6.8.3-0-202503201334qttools-Windows-Windows_10_22H2-Clang-Windows-WebAssembly-X86_64.7z
+2026-09-20 15:25:56,045 - aqt.installer - DEBUG - installer 136627263090688 Download URL: https://download.qt.io/online/qtsdkrepository/all_os/wasm/qt6_683/qt6_683_wasm_singlethread/qt.qt6.683.wasm_singlethread/6.8.3-0-202503201334qtdeclarative-Windows-Windows_10_22H2-Clang-Windows-WebAssembly-X86_64.7z
+2026-09-20 15:25:56,083 - aqt.helper - INFO - helper 125827492184064 Downloading qtbase...
+2026-09-20 15:25:56,084 - aqt.installer - DEBUG - installer 125827492184064 Download URL: https://download.qt.io/online/qtsdkrepository/all_os/wasm/qt6_683/qt6_683_wasm_singlethread/qt.qt6.683.wasm_singlethread/6.8.3-0-202503201334qtbase-Windows-Windows_10_22H2-Clang-Windows-WebAssembly-X86_64.7z
+2026-09-20 15:25:58,516 - aqt.helper - DEBUG - helper 125827492184064 Asked to redirect(302) to: https://ftp.jaist.ac.jp/pub/qtproject/online/qtsdkrepository/all_os/wasm/qt6_683/qt6_683_wasm_singlethread/qt.qt6.683.wasm_singlethread/6.8.3-0-202503201334qtbase-Windows-Windows_10_22H2-Clang-Windows-WebAssembly-X86_64.7z
+2026-09-20 15:25:58,516 - aqt.helper - INFO - helper 125827492184064 Redirected: ftp.jaist.ac.jp
+2026-09-20 15:25:58,523 - aqt.helper - DEBUG - helper 123133804355584 Asked to redirect(302) to: https://ftp.jaist.ac.jp/pub/qtproject/online/qtsdkrepository/all_os/wasm/qt6_683/qt6_683_wasm_singlethread/qt.qt6.683.wasm_singlethread/6.8.3-0-202503201334qtsvg-Windows-Windows_10_22H2-Clang-Windows-WebAssembly-X86_64.7z
+2026-09-20 15:25:58,523 - aqt.helper - INFO - helper 123133804355584 Redirected: ftp.jaist.ac.jp
+2026-09-20 15:25:58,527 - aqt.helper - DEBUG - helper 136627263090688 Asked to redirect(302) to: https://ftp.jaist.ac.jp/pub/qtproject/online/qtsdkrepository/all_os/wasm/qt6_683/qt6_683_wasm_singlethread/qt.qt6.683.wasm_singlethread/6.8.3-0-202503201334qtdeclarative-Windows-Windows_10_22H2-Clang-Windows-WebAssembly-X86_64.7z
+2026-09-20 15:25:58,527 - aqt.helper - INFO - helper 136627263090688 Redirected: ftp.jaist.ac.jp
+2026-09-20 15:25:59,177 - aqt.helper - DEBUG - helper 130205926813696 Asked to redirect(302) to: https://ftp.jaist.ac.jp/pub/qtproject/online/qtsdkrepository/all_os/wasm/qt6_683/qt6_683_wasm_singlethread/qt.qt6.683.wasm_singlethread/6.8.3-0-202503201334qttools-Windows-Windows_10_22H2-Clang-Windows-WebAssembly-X86_64.7z
+2026-09-20 15:25:59,178 - aqt.helper - INFO - helper 130205926813696 Redirected: ftp.jaist.ac.jp
+2026-09-20 15:26:08,836 - aqt.installer - INFO - installer 123133804355584 Finished installation of qtsvg-Windows-Windows_10_22H2-Clang-Windows-WebAssembly-X86_64.7z in 18.07806916
+2026-09-20 15:26:08,844 - aqt.helper - DEBUG - helper 123133804355584 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/wasm/qt6_683/qt6_683_wasm_singlethread/qt.qt6.683.wasm_singlethread/6.8.3-0-202503201334qttranslations-Windows-Windows_10_22H2-Clang-Windows-WebAssembly-X86_64.7z.sha256
+2026-09-20 15:26:10,648 - aqt.helper - INFO - helper 123133804355584 Downloading qttranslations...
+2026-09-20 15:26:10,648 - aqt.installer - DEBUG - installer 123133804355584 Download URL: https://download.qt.io/online/qtsdkrepository/all_os/wasm/qt6_683/qt6_683_wasm_singlethread/qt.qt6.683.wasm_singlethread/6.8.3-0-202503201334qttranslations-Windows-Windows_10_22H2-Clang-Windows-WebAssembly-X86_64.7z
+2026-09-20 15:26:12,116 - aqt.helper - DEBUG - helper 123133804355584 Asked to redirect(302) to: https://ftp.jaist.ac.jp/pub/qtproject/online/qtsdkrepository/all_os/wasm/qt6_683/qt6_683_wasm_singlethread/qt.qt6.683.wasm_singlethread/6.8.3-0-202503201334qttranslations-Windows-Windows_10_22H2-Clang-Windows-WebAssembly-X86_64.7z
+2026-09-20 15:26:12,117 - aqt.helper - INFO - helper 123133804355584 Redirected: ftp.jaist.ac.jp
+2026-09-20 15:26:35,323 - aqt.installer - INFO - installer 130205926813696 Finished installation of qttools-Windows-Windows_10_22H2-Clang-Windows-WebAssembly-X86_64.7z in 44.56150539
+2026-09-20 15:26:55,847 - aqt.installer - INFO - installer 123133804355584 Finished installation of qttranslations-Windows-Windows_10_22H2-Clang-Windows-WebAssembly-X86_64.7z in 47.00426205
+2026-09-20 15:32:09,522 - aqt.installer - INFO - installer 125827492184064 Finished installation of qtbase-Windows-Windows_10_22H2-Clang-Windows-WebAssembly-X86_64.7z in 378.76419528
+2026-09-20 15:32:28,477 - aqt.installer - INFO - installer 136627263090688 Finished installation of qtdeclarative-Windows-Windows_10_22H2-Clang-Windows-WebAssembly-X86_64.7z in 397.71738018
+2026-09-20 15:32:28,521 - aqt.updater - INFO - updater 129221686308864 Patching /opt/venus/build-gx-hostedtoolcache/Qt/6.8.3/wasm_singlethread/bin/qmake
+2026-09-20 15:32:28,522 - aqt.updater - INFO - updater 129221686308864 Patching /opt/venus/build-gx-hostedtoolcache/Qt/6.8.3/wasm_singlethread/bin/qtpaths
+2026-09-20 15:32:28,523 - aqt.updater - INFO - updater 129221686308864 Patching /opt/venus/build-gx-hostedtoolcache/Qt/6.8.3/wasm_singlethread/bin/qmake6
+2026-09-20 15:32:28,523 - aqt.updater - INFO - updater 129221686308864 Patching /opt/venus/build-gx-hostedtoolcache/Qt/6.8.3/wasm_singlethread/bin/qtpaths6
+2026-09-20 15:32:28,524 - aqt.updater - INFO - updater 129221686308864 Patching /opt/venus/build-gx-hostedtoolcache/Qt/6.8.3/wasm_singlethread/bin/target_qt.conf
+2026-09-20 15:32:28,526 - aqt.main - INFO - installer 129221686308864 Finished installation
+2026-09-20 15:32:28,526 - aqt.main - INFO - installer 129221686308864 Time elapsed: 426.46958638 second
+2026-09-20 15:39:40,239 - aqt.main - INFO - installer 139966060195840 aqtinstall(aqt) v3.3.0 on Python 3.10.12 [CPython GCC 11.4.0]
+2026-09-20 15:39:40,239 - aqt.helper - DEBUG - helper 139966060195840 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/tools_cmake/Updates.xml.sha256
+2026-09-20 15:39:42,329 - aqt.helper - DEBUG - helper 139966060195840 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/tools_cmake/Updates.xml.sha256
+2026-09-20 15:39:44,618 - aqt.helper - DEBUG - helper 137165355741184 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/tools_cmake/qt.tools.cmake/3.30.5-202502251255linux64_x86_cmake_tools.7z.sha256
+2026-09-20 15:39:45,694 - aqt.helper - INFO - helper 137165355741184 Downloading qt.tools.cmake...
+2026-09-20 15:39:45,696 - aqt.installer - DEBUG - installer 137165355741184 Download URL: https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/tools_cmake/qt.tools.cmake/3.30.5-202502251255linux64_x86_cmake_tools.7z
+2026-09-20 15:39:46,708 - aqt.helper - DEBUG - helper 137165355741184 Asked to redirect(302) to: https://ftp.jaist.ac.jp/pub/qtproject/online/qtsdkrepository/linux_x64/desktop/tools_cmake/qt.tools.cmake/3.30.5-202502251255linux64_x86_cmake_tools.7z
+2026-09-20 15:39:46,708 - aqt.helper - INFO - helper 137165355741184 Redirected: ftp.jaist.ac.jp
+2026-09-20 15:44:29,453 - aqt.installer - INFO - installer 137165355741184 Finished installation of linux64_x86_cmake_tools.7z in 284.83766304
+2026-09-20 15:44:29,501 - aqt.main - INFO - installer 139966060195840 Finished installation
+2026-09-20 15:44:29,501 - aqt.main - INFO - installer 139966060195840 Time elapsed: 289.26202539 second
+2026-09-20 15:44:45,987 - aqt.main - INFO - installer 138903600357376 aqtinstall(aqt) v3.3.0 on Python 3.10.12 [CPython GCC 11.4.0]
+2026-09-20 15:44:45,987 - aqt.helper - DEBUG - helper 138903600357376 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt6_683/qt6_683/Updates.xml.sha256
+2026-09-20 15:44:48,376 - aqt.helper - DEBUG - helper 138903600357376 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/linux_x64/extensions/qtwebengine/683/x86_64/Updates.xml.sha256
+2026-09-20 15:44:50,426 - aqt.archives - INFO - archives 138903600357376 Found extension qtwebengine
+2026-09-20 15:44:50,426 - aqt.helper - DEBUG - helper 138903600357376 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/linux_x64/extensions/qtpdf/683/x86_64/Updates.xml.sha256
+2026-09-20 15:44:52,515 - aqt.archives - INFO - archives 138903600357376 Found extension qtpdf
+2026-09-20 15:44:52,521 - aqt.main - ERROR - installer 138903600357376 The packages ['qt5compat', 'qt_base', 'qtshadertools', 'qtwebsockets'] were not found while parsing XML of package information!
+==============================Suggested follow-up:==============================
+* Please use 'aqt list-qt linux desktop --arch 6.8.3' to show architectures available.
+* Please use 'aqt list-qt linux desktop --modules 6.8.3 <arch>' to show modules available.

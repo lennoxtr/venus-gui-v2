@@ -139,7 +139,7 @@ if [ ! -f "${METADATA_FILE}.backup" ]; then
     python3 << 'PATCH_EOF'
 import re
 
-metadata_file = "/opt/venus/python/lib/python3.12/site-packages/aqt/metadata.py"
+metadata_file = "/opt/venus/python/lib/python3.10/site-packages/aqt/metadata.py"
 
 # Read the file
 with open(metadata_file, 'r') as f:
@@ -427,6 +427,9 @@ echo "Using QT_HOST_PATH: ${QT_HOST_PATH}"
 
 # Source emscripten environment
 source "${OUTPUTDIR}/emsdk/emsdk_env.sh"
+
+unset CMAKE_EXE_LINKER_FLAGS
+unset LDFLAGS
 
 # Configure QtMQTT with qt-cmake (Qt 6.8.3 method)
 ${QTDIR}/bin/qt-cmake .. -DQT_HOST_PATH="${QT_HOST_PATH}"

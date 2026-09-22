@@ -8348,6 +8348,16 @@ Do you want to continue?</source>
         <source>Silence alarm</source>
         <translation type="unfinished"></translation>
     </message>
+    <message id="common_words_acknowledge_single_alarm">
+        <location filename="../../../components/StatusBar.qml" line="308"/>
+        <source>Acknowledge Alarm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="common_words_acknowledge_all_alarm">
+        <location filename="../../../components/StatusBar.qml" line="309"/>
+        <source>Acknowledge All Alarms</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message id="switchable_output_press">
         <location filename="../../../components/SwitchableOutputDelegate.qml" line="267"/>
         <source>Press</source>

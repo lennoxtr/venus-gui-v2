@@ -7,6 +7,7 @@
 #include <QVector>
 #include <QDateTime>
 #include <QTimer>
+#include <QDebug>
 
 using namespace Victron::VenusOS;
 
@@ -868,7 +869,8 @@ void NotificationModel::acknowledgeAllInactive()
 }
 
 void NotificationModel::acknowledgeAll()
-{
+{	
+	qDebug() << "Acknowledge All Triggered";
 	if (m_acknowledgeAll) {
 		m_acknowledgeAll->setValue(1);
 	}
