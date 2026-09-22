@@ -14,21 +14,6 @@ Item {
 
 	property bool animationEnabled: Global.animationEnabled
 
-	//function reload() {
-	//	let totalRows = NotificationModel.count
-
-	//	for (let i = 0; i < totalRows; i++) {
-	//		let entry = NotificationModel.at(i)
-	//		if (entry && entry.active && !entry.acknowledged) {
-	//				ToastModel.addNotification(
-	//					entry.modelId ,
-	//					entry.type,
-	//					"" + entry.deviceName + "\n" + entry.description)
-	//		}
-	//	}
-	//}
-
-
 	property Connections _toastController: Connections {
 		id: toastController
 		target: NotificationModel
@@ -78,6 +63,20 @@ Item {
 		}
 	}
 
+	Loader {
+		id: vesselgeneralarrangementloader
+
+		// Check Floatswitch Alarms
+		readonly property bool loadGeneralArrangement: NotificationModel.activeFloatSwitchAlarms > 0
+		
+		anchors.fill: parent
+		active: loadGeneralArrangement
+
+		sourceComponent: Component {
+			VesselGeneralArrangementPopup { }
+		}
+	}
+
 	ListView {
 		id: view
 		anchors {
@@ -120,6 +119,10 @@ Item {
 			height: view.height
 			opacity: 1.0
 
+			// Custom for Vessel Float Switch Alarm
+			readonly property bool isFloatSwitchAlarm: NotificationModel.activeFloatSwitchAlarms > 0
+
+
 			Behavior on opacity {
 				enabled: root.animationEnabled
 				OpacityAnimator { duration: 200 }
@@ -128,12 +131,17 @@ Item {
 			Component.onCompleted: checkIndex()
 			onIndexChanged: checkIndex()
 			function checkIndex() {
-				toastContainer.opacity = index === 0 ? 1.0 : 0.0
-				if (index === 0 && autoCloseInterval > 0) {
-					// our index is zero, so we're the visible toast.
-					// check to see if we need to autoclose.
-					autoCloseTimer.interval = autoCloseInterval
-					autoCloseTimer.start()
+				if (!isFloatSwitchAlarm) {
+					toastContainer.opacity = index === 0 ? 1.0 : 0.0
+					if (index === 0 && autoCloseInterval > 0) {
+						// our index is zero, so we're the visible toast.
+						// check to see if we need to autoclose.
+						autoCloseTimer.interval = autoCloseInterval
+						autoCloseTimer.start()
+					}
+				} else {
+					console.log("Showing floatswitch alarm")
+					toastContainer.opacity = 1.0
 				}
 			}
 
@@ -143,6 +151,7 @@ Item {
 			}
 
 			ToastNotification {
+				visible: !toastContainer.isFloatSwitchAlarm
 				y: Theme.screenSize === Theme.Portrait ? 0 : parent.height - height
 
 				height: implicitHeight
@@ -154,21 +163,13 @@ Item {
 				type: toastContainer.type
 
 				onDismissed: {
-    				console.log("========== KHANG onDismissed ==========")
-    				console.log("KHANG: notificationModelId =", toastContainer.notificationModelId)
-    				console.log("KHANG: modelId =", toastContainer.modelId)
-    				console.log("KHANG: type =", type)
-
+    	
     				if (toastContainer.notificationModelId !== 0 && type !== VenusOS.Notification_Info) {
-        				console.log("KHANG: onDismissed -> acknowledge(",
-                    				toastContainer.notificationModelId, ")")
 
         				NotificationModel.acknowledge(toastContainer.notificationModelId)
     				}
 
-    				console.log("KHANG: onDismissed -> ToastModel.remove(",
-                					toastContainer.modelId, ")")
-
+    			
     				ToastModel.remove(toastContainer.modelId)
 				}
 

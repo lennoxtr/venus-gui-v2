@@ -99,7 +99,18 @@ void NotificationSlot::acknowledge()
 	}
 }
 
+int NotificationModel::activeFloatSwitchAlarms() const
+{
+    int count = 0;
 
+    for (int i = 0; i < m_data.size(); i++) {
+		if (m_data[i].active && m_data[i].service.contains("digitalinput")) {
+			count += 1;
+		}
+	}
+
+    return count;
+}
 
 NotificationModel* NotificationModel::create(QQmlEngine *engine, QJSEngine *)
 {
@@ -1152,6 +1163,29 @@ void ToastModel::requestClose(quint32 modelId)
 	Q_EMIT closeRequested(modelId);
 	// TODO: view should momentarily disable animations for the close operation.
 	remove(modelId);
+}
+
+QVariant ToastModel::getData(int row, int role)
+{
+	if (row < 0 || row >= m_data.size()) {
+		return QVariant();
+	}
+
+	switch (role)
+	{
+		case static_cast<int>(ToastRoles::ModelId):
+			return m_data[row].modelId;
+		case static_cast<int>(ToastRoles::NotificationModelId):
+			return m_data[row].notificationModelId;
+		case static_cast<int>(ToastRoles::Type):
+			return m_data[row].type;
+		case static_cast<int>(ToastRoles::Description):
+			return m_data[row].description;
+		case static_cast<int>(ToastRoles::AutoCloseInterval):
+			return m_data[row].autoCloseInterval;
+		default: break;
+	}
+	return QVariant();
 }
 
 QVariant ToastModel::data(const QModelIndex& index, int role) const
