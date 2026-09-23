@@ -5,10 +5,17 @@ import Victron.VenusOS
 Popup {
     id: root
 
-    anchors.centerIn: parent
+    readonly property real sideSpace: Theme.geometry_page_content_horizontalMargin
+    readonly property real topSpace: Theme.geometry_statusBar_height
+    readonly property real bottomSpace: 2 * Theme.geometry_toastNotification_highlightWidth
+                                        + 0.4 * Theme.geometry_toastNotification_verticalMargin
 
-    width: 800
-    height: 400
+    // No leftMargin/rightMargin/topMargin/bottomMargin: they shrink the popup
+    x: sideSpace
+    y: topSpace
+    width: parent ? parent.width - 2 * sideSpace : 0
+    height: parent ? parent.height - topSpace - bottomSpace : 0
+
 
     modal: false
     closePolicy: Popup.NoAutoClose
@@ -16,7 +23,9 @@ Popup {
     background: Rectangle {
         //width: 200
         //height: 100
-        color: "royalblue"
+        color: "white"
+        border.color: "black"
+        border.width: 3
         radius: Theme.geometry_toastNotification_radius * 4
     }
 
@@ -31,5 +40,5 @@ Popup {
     //    source: "qrc:/images/vessel.svg"
 
     //    fillMode: Image.PreserveAspectFit
-    //}
+    //} 
 }

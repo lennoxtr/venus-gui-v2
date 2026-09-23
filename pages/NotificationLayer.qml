@@ -70,10 +70,13 @@ Item {
 		readonly property bool loadGeneralArrangement: NotificationModel.unacknowledgedFloatSwitchAlarms > 0
 		
 		anchors.fill: parent
+
 		active: loadGeneralArrangement
 
 		sourceComponent: Component {
-			VesselGeneralArrangementPopup { }
+			VesselGeneralArrangementPopup {
+				parent: root
+			}
 		}
 
 		onLoadGeneralArrangementChanged: {
