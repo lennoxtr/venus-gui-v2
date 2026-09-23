@@ -127,7 +127,7 @@ class NotificationModel : public QAbstractListModel
 	Q_PROPERTY(int unacknowledgedWarnings READ unacknowledgedWarnings NOTIFY unacknowledgedWarningsChanged FINAL)
 	Q_PROPERTY(int unacknowledgedInfos READ unacknowledgedInfos NOTIFY unacknowledgedInfosChanged FINAL)
 
-	Q_PROPERTY(int activeFloatSwitchAlarms READ activeFloatSwitchAlarms FINAL)
+	Q_PROPERTY(int unacknowledgedFloatSwitchAlarms READ unacknowledgedFloatSwitchAlarms NOTIFY unacknowledgedFloatSwitchAlarmsChanged FINAL)
 
 public:
 	enum class NotificationRoles {
@@ -161,7 +161,7 @@ public:
 	int unacknowledgedWarnings() const { return m_unacknowledgedWarnings; }
 	int unacknowledgedInfos() const { return m_unacknowledgedInfos; }
 
-	int activeFloatSwitchAlarms() const;
+	int unacknowledgedFloatSwitchAlarms() const;
 
 	Q_INVOKABLE void acknowledge(quint32 modelId);
 	Q_INVOKABLE void acknowledgeRow(int row);
@@ -184,6 +184,8 @@ Q_SIGNALS:
 	void unacknowledgedAlarmsChanged();
 	void unacknowledgedWarningsChanged();
 	void unacknowledgedInfosChanged();
+
+	void unacknowledgedFloatSwitchAlarmsChanged();
 
 	// for toasts
 	void added(quint32 modelId);

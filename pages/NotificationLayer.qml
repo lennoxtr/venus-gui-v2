@@ -67,14 +67,22 @@ Item {
 		id: vesselgeneralarrangementloader
 
 		// Check Floatswitch Alarms
-		readonly property bool loadGeneralArrangement: NotificationModel.activeFloatSwitchAlarms > 0
+		readonly property bool loadGeneralArrangement: NotificationModel.unacknowledgedFloatSwitchAlarms > 0
 		
 		anchors.fill: parent
 		active: loadGeneralArrangement
 
 		sourceComponent: Component {
-			console.log("Loading Vessel General Arrangement")
 			VesselGeneralArrangementPopup { }
+		}
+
+		onLoadGeneralArrangementChanged: {
+			console.log("Loading General Arrangement changed to ", loadGeneralArrangement)
+		}
+
+		onLoaded: {
+			console.log("VesselGeneralArrangementPopup loaded")
+			item.open()
 		}
 	}
 
@@ -132,17 +140,12 @@ Item {
 			Component.onCompleted: checkIndex()
 			onIndexChanged: checkIndex()
 			function checkIndex() {
-				if (!isFloatSwitchAlarm) {
-					toastContainer.opacity = index === 0 ? 1.0 : 0.0
-					if (index === 0 && autoCloseInterval > 0) {
-						// our index is zero, so we're the visible toast.
-						// check to see if we need to autoclose.
-						autoCloseTimer.interval = autoCloseInterval
-						autoCloseTimer.start()
-					}
-				} else {
-					console.log("Showing floatswitch alarm")
-					toastContainer.opacity = 1.0
+				toastContainer.opacity = index === 0 ? 1.0 : 0.0
+				if (index === 0 && autoCloseInterval > 0) {
+					// our index is zero, so we're the visible toast.
+					// check to see if we need to autoclose.
+					autoCloseTimer.interval = autoCloseInterval
+					autoCloseTimer.start()
 				}
 			}
 

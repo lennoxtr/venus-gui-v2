@@ -17,7 +17,7 @@ Popup {
         //width: 200
         //height: 100
         color: "royalblue"
-        radius: Theme.geometry_toastNotification_radius
+        radius: Theme.geometry_toastNotification_radius * 4
     }
 
     //Image {

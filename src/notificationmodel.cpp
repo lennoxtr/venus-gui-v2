@@ -99,16 +99,18 @@ void NotificationSlot::acknowledge()
 	}
 }
 
-int NotificationModel::activeFloatSwitchAlarms() const
-{
+int NotificationModel::unacknowledgedFloatSwitchAlarms() const
+{	
+	qDebug() << "unacknowledgedFloatSwitchAlarms() called";
     int count = 0;
 
     for (int i = 0; i < m_data.size(); i++) {
-		if (m_data[i].active && m_data[i].service.contains("digitalinput")) {
+		qDebug() << "Service: " << m_data[i].service;
+		if (!m_data[i].acknowledged && m_data[i].service.contains("digitalinput")) {
 			count += 1;
 		}
 	}
-
+	qDebug() << "Count: " << count;
     return count;
 }
 
@@ -167,6 +169,7 @@ void NotificationModel::reset()
 	}
 	if (oldUnacknowledgedAlarms != m_unacknowledgedAlarms) {
 		Q_EMIT unacknowledgedAlarmsChanged();
+		Q_EMIT unacknowledgedFloatSwitchAlarmsChanged();
 	}
 
 	if (oldActiveWarnings != m_activeWarnings) {
@@ -395,6 +398,7 @@ void NotificationModel::addAssociatedEntry(NotificationSlot *slot, bool isNew)
 			if (!entry.acknowledged) {
 				m_unacknowledgedAlarms += 1;
 				Q_EMIT unacknowledgedAlarmsChanged();
+				Q_EMIT unacknowledgedFloatSwitchAlarmsChanged();
 			}
 			break;
 		case Enums::Notification_Warning:
@@ -549,6 +553,7 @@ void NotificationModel::updateAssociatedEntry(NotificationSlot *slot, Notificati
 							if (!acknowledged) {
 								m_unacknowledgedAlarms = std::max(0, m_unacknowledgedAlarms + delta);
 								Q_EMIT unacknowledgedAlarmsChanged();
+								Q_EMIT unacknowledgedFloatSwitchAlarmsChanged();
 							}
 							break;
 						case Enums::Notification_Warning:
@@ -591,6 +596,7 @@ void NotificationModel::updateAssociatedEntry(NotificationSlot *slot, Notificati
 							|| changedRoles.contains(static_cast<int>(NotificationRoles::Acknowledged))) {
 						m_unacknowledgedAlarms = data.acknowledged ? std::max(0, m_unacknowledgedAlarms-1) : m_unacknowledgedAlarms+1;
 						Q_EMIT unacknowledgedAlarmsChanged();
+						Q_EMIT unacknowledgedFloatSwitchAlarmsChanged();
 					}
 
 					break;
@@ -807,6 +813,7 @@ void NotificationModel::handleSlotOffline(NotificationSlot *slot)
 					case Enums::Notification_Alarm:
 						m_unacknowledgedAlarms = std::max(0, m_unacknowledgedAlarms - 1);
 						Q_EMIT unacknowledgedAlarmsChanged();
+						Q_EMIT unacknowledgedFloatSwitchAlarmsChanged();
 						break;
 					case Enums::Notification_Warning:
 						m_unacknowledgedWarnings = std::max(0, m_unacknowledgedWarnings - 1);
