@@ -73,6 +73,7 @@ Item {
 		active: loadGeneralArrangement
 
 		sourceComponent: Component {
+			console.log("Loading Vessel General Arrangement")
 			VesselGeneralArrangementPopup { }
 		}
 	}

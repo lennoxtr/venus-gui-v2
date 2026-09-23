@@ -4,16 +4,11 @@ import Victron.VenusOS
 
 Popup {
     id: root
-    anchors.left: parent.left
-    anchors.right: parent.right
-    anchors.top: parent.top
-    anchors.bottom: parent.bottom
 
-    anchors.leftMargin: Theme.geometry_page_content_horizontalMargin
-    anchors.rightMargin: Theme.geometry_page_content_horizontalMargin
-    anchors.topMargin: Theme.geometry_statusBar_height + 20
-    anchors.bottomMargin: 2 * Theme.geometry_toastNotification_highlightWidth
-                + Theme.geometry_toastNotification_verticalMargin
+    anchors.centerIn: parent
+
+    width: 800
+    height: 400
 
     modal: false
     closePolicy: Popup.NoAutoClose
