@@ -906,7 +906,7 @@ set(VictronVenusOS_RESOURCES
     images/widget_connector_nub_horizontal.svg
     images/widget_connector_nub_vertical.svg
     images/wind.svg
-    images/vessel_ga.svg
+    images/vessel_ga.png
     themes/animation/Animation.json
     themes/color/ColorDesign.json
     themes/color/Dark.json
