@@ -48,7 +48,7 @@ Popup {
             id: background
             anchors.fill: parent
             source: "qrc:/images/vessel_ga.png"
-            fillMode: Image.PreserveAspectCrop
+            fillMode: Image.PreserveAspectFit
             opacity: 0.6
         }
     }
