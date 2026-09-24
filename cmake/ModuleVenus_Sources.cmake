@@ -804,6 +804,7 @@ set(VictronVenusOS_RESOURCES
     images/controlcards-no-devices.svg
     images/dcloads.svg
     images/dot.svg
+    images/float_switch.png
     images/electron.svg
     images/electron_arrow.svg
     images/ess.svg
