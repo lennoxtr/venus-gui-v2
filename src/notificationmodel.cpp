@@ -1235,4 +1235,3 @@ QHash<int, QByteArray> ToastModel::roleNames() const
 	};
 	return roles;
 }
-

@@ -187,7 +187,7 @@ Q_SIGNALS:
 
 	void unacknowledgedFloatSwitchAlarmsChanged();
 
-	// for toasts and float switch alarm
+	// for toasts
 	void added(quint32 modelId);
 	void changed(quint32 modelId, QList<int> roles);
 	void removed(quint32 modelId);

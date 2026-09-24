@@ -67,14 +67,25 @@ Item {
 		id: vesselgeneralarrangementloader
 
 		// Check Floatswitch Alarms
-		readonly property bool loadGeneralArrangement: NotificationModel.activeFloatSwitchAlarms > 0
+		readonly property bool loadGeneralArrangement: NotificationModel.unacknowledgedFloatSwitchAlarms > 0
 		
 		anchors.fill: parent
+
 		active: loadGeneralArrangement
 
 		sourceComponent: Component {
-			console.log("Loading Vessel General Arrangement")
-			VesselGeneralArrangementPopup { }
+			VesselGeneralArrangementPopup {
+				parent: root
+			}
+		}
+
+		onLoadGeneralArrangementChanged: {
+			console.log("Loading General Arrangement changed to ", loadGeneralArrangement)
+		}
+
+		onLoaded: {
+			console.log("VesselGeneralArrangementPopup loaded")
+			item.open()
 		}
 	}
 
