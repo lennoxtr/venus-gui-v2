@@ -22,10 +22,10 @@ Popup {
 
 
     readonly property var floatSwitchLocationsScaling: ({
-        "com.victronenergy.digitalinput.input_1":   { x: 0.65, y: 0.75},
-        "com.victronenergy.digitalinput.input_2":  { x: 0.6, y: 0.6},
-        "com.victronenergy.digitalinput.input_3":     { x: 0.4, y: 0.5},
-        "com.victronenergy.digitalinput.input_4":     { x: 0.4, y: 0.4}
+        "com.victronenergy.digitalinput.input_1":   { x: 0.67, y: 0.65},
+        "com.victronenergy.digitalinput.input_2":  { x: 0.44, y: 0.65},
+        "com.victronenergy.digitalinput.input_3":     { x: 0.18, y: 0.63},
+        "com.victronenergy.digitalinput.input_4":     { x: 0.12, y: 0.65}
     })
 
     readonly property var acknowledgeButtonLocationsScaling: ({
@@ -48,8 +48,9 @@ Popup {
             id: background
             anchors.fill: parent
             source: "qrc:/images/vessel_ga.png"
-            fillMode: Image.PreserveAspectFit
-            opacity: 0.6
+            fillMode: Image.PreserveAspectCrop
+            opacity: 0.7
+            mipmap: true
         }
     }
 
@@ -72,7 +73,7 @@ Popup {
             Image {
                 id: floatswitchimage
                 source: "qrc:/images/float_switch.png"
-                width: 0.06 *  root.width
+                width: 0.05 *  root.width
                 height: floatswitchimage.width
                 fillMode: Image.PreserveAspectFit
                 mipmap: true
@@ -85,7 +86,6 @@ Popup {
 
                     onClicked: {
                         console.log("Float Switch ", modelData, " Clicked")
-                        highlightTimer.restart()
                     }
                 }
             }
@@ -95,6 +95,7 @@ Popup {
 
                 width: implicitWidth
                 height: implicitHeight
+                radius: height / 2
                 
                 leftInset: Theme.geometry_statusBar_spacing / 2
 		        rightInset: Theme.geometry_statusBar_spacing / 2
@@ -120,15 +121,8 @@ Popup {
 	            KeyNavigationHighlight.margins: -(4 * Theme.geometry_button_border_width)
                 onClicked: {
                         console.log("Button Clicked")
-                        highlightTimer.restart()
                     }
 
-            }
-
-            Timer {
-                id: highlightTimer
-                interval: 2000
-                repeat: false
             }
         }
     }
