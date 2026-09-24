@@ -22,10 +22,10 @@ Popup {
 
 
     readonly property var floatSwitchLocationsScaling: ({
-        "com.victronenergy.digitalinput.input_1":   { x: 0.7, y: 0.62},
-        "com.victronenergy.digitalinput.input_2":  { x: 0.4, y: 0.6},
-        "com.victronenergy.digitalinput.input_3":     { x: 0.3, y: 0.55},
-        "com.victronenergy.digitalinput.input_4":     { x: 0.2, y: 0.45}
+        "com.victronenergy.digitalinput.input_1":   { x: 0.65, y: 0.75},
+        "com.victronenergy.digitalinput.input_2":  { x: 0.6, y: 0.6},
+        "com.victronenergy.digitalinput.input_3":     { x: 0.4, y: 0.5},
+        "com.victronenergy.digitalinput.input_4":     { x: 0.4, y: 0.4}
     })
 
     readonly property var acknowledgeButtonLocationsScaling: ({
@@ -49,6 +49,7 @@ Popup {
             anchors.fill: parent
             source: "qrc:/images/vessel_ga.svg"
             fillMode: Image.PreserveAspectCrop
+            opacity: 0.4
         }
     }
 
@@ -71,7 +72,7 @@ Popup {
             Image {
                 id: floatswitchimage
                 source: "qrc:/images/float_switch.png"
-                width: 0.1 *  root.width
+                width: 0.06 *  root.width
                 height: floatswitchimage.width
                 fillMode: Image.PreserveAspectFit
                 mipmap: true
