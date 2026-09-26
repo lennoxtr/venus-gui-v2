@@ -106,7 +106,7 @@ Item {
 
         width: implicitWidth
         height: implicitHeight
-        radius: height / 4
+        radius: Theme.geometry_toastNotification_radius * 2
                 
         leftInset: Theme.geometry_statusBar_spacing / 2
 		rightInset: Theme.geometry_statusBar_spacing / 2

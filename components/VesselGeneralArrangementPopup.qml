@@ -29,10 +29,10 @@ Popup {
     })
 
     readonly property var acknowledgeButtonLocationsScaling: ({
-        "com.victronenergy.digitalinput.input_1":   { x: 0.75, y: 0.95},
-        "com.victronenergy.digitalinput.input_2":  { x: 0.55, y: 0.3},
-        "com.victronenergy.digitalinput.input_3":     { x: 0.28, y: 0.95},
-        "com.victronenergy.digitalinput.input_4":     { x: 0.2, y: 0.3}
+        "com.victronenergy.digitalinput.input_1":   { x: 0.75, y: 0.9},
+        "com.victronenergy.digitalinput.input_2":  { x: 0.55, y: 0.15},
+        "com.victronenergy.digitalinput.input_3":     { x: 0.28, y: 0.9},
+        "com.victronenergy.digitalinput.input_4":     { x: 0.2, y: 0.15}
     })
 
     background: Rectangle {
