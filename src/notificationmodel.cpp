@@ -1235,3 +1235,109 @@ QHash<int, QByteArray> ToastModel::roleNames() const
 	};
 	return roles;
 }
+
+FloatSwitchModel* FloatSwitchModel::create(QQmlEngine *engine, QJSEngine *)
+{
+	static FloatSwitchModel* instance = new FloatSwitchModel(engine);
+	return instance;
+}
+
+FloatSwitchModel::FloatSwitchModel(QObject *parent)
+	: QAbstractListModel(parent)
+{
+}
+
+void FloatSwitchModel::addNotification(quint32 notificationModelId, const QString &deviceName, const QString &serviceString)
+{
+	floatswitchData floatswitch;
+	floatswitch.notificationModelId = notificationModelId;
+	floatswitch.deviceName = deviceName;
+	floatswitch.serviceString = serviceString;
+
+	beginInsertRows(QModelIndex(), m_data.size(), m_data.size());
+	m_data.append(floatswitch);
+	endInsertRows();
+	Q_EMIT countChanged();
+	return;
+}
+
+void FloatSwitchModel::updateNotification(quint32 notificationModelId, const QString &deviceName)
+{
+	for (qsizetype i = 0; i < m_data.size(); ++i) {
+		if (m_data[i].notificationModelId == notificationModelId) {
+			m_data[i].deviceName = deviceName;
+			m_data[i].serviceString = serviceString;
+			Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0), QList<int>() << static_cast<int>(FloatSwitchModel::FloatSwitchRoles::DeviceName));
+			return;
+		}
+	}
+}
+
+bool FloatSwitchModel::removeNotification(quint32 notificationModelId)
+{
+	for (qsizetype i = 0; i < m_data.size(); ++i) {
+		if (m_data[i].notificationModelId == notificationModelId) {
+			beginRemoveRows(QModelIndex(), i, i);
+			m_data.remove(i);
+			endRemoveRows();
+			Q_EMIT countChanged();
+			return true;
+		}
+	}
+
+	return false;
+}
+
+QVariant FloatSwitchModel::getData(int row, int role)
+{
+	if (row < 0 || row >= m_data.size()) {
+		return QVariant();
+	}
+
+	switch (role)
+	{
+		case static_cast<int>(FloatSwitchRoles::NotificationModelId):
+			return m_data[row].notificationModelId;
+		case static_cast<int>(FloatSwitchRoles::DeviceName):
+			return m_data[row].deviceName;
+		case static_cast<int>(FloatSwitchRoles::ServiceString):
+			return m_data[row].serviceString;
+		default: break;
+	}
+	return QVariant();
+}
+
+QVariant FloatSwitchModel::data(const QModelIndex& index, int role) const
+{
+	const int row = index.row();
+	if (row < 0 || row >= m_data.size()) {
+		return QVariant();
+	}
+
+	switch (role)
+	{
+		case static_cast<int>(FloatSwitchRoles::NotificationModelId):
+			return m_data[row].notificationModelId;
+		case static_cast<int>(FloatSwitchRoles::DeviceName):
+			return m_data[row].deviceName;
+		case static_cast<int>(FloatSwitchRoles::ServiceString):
+			return m_data[row].serviceString;
+		default: break;
+	}
+	return QVariant();
+}
+
+int FloatSwitchModel::rowCount(const QModelIndex &) const
+{
+	return m_data.count();
+}
+
+QHash<int, QByteArray> FloatSwitchModel::roleNames() const
+{
+	static const QHash<int, QByteArray> roles {
+		{ static_cast<int>(FloatSwitchRoles::NotificationModelId), "notificationModelId" },
+		{ static_cast<int>(FloatSwitchRoles::DeviceName), "deviceName" },
+		{ static_cast<int>(FloatSwitchRoles::ServiceString), "serviceString" },
+	};
+	return roles;
+}

@@ -304,6 +304,57 @@ private:
 	quint32 m_modelId = 0;
 };
 
+class floatswitchData
+{
+	Q_GADGET
+	QML_ELEMENT
+
+	Q_PROPERTY(quint32 notificationModelId MEMBER notificationModelId FINAL)
+	Q_PROPERTY(QString deviceName MEMBER deviceName FINAL)
+	Q_PROPERTY(QString serviceString MEMBER serviceString FINAL)
+
+public:
+	quint32 notificationModelId = 0;
+	QString deviceName;
+	QString serviceString;
+};
+
+class FloatSwitchModel : public QAbstractListModel
+{
+	Q_OBJECT
+	QML_ELEMENT
+	QML_SINGLETON
+
+	Q_PROPERTY(int count READ rowCount NOTIFY countChanged FINAL)
+public:
+	enum class FloatSwitchRoles {
+		NotificationModelId = Qt::UserRole,
+		DeviceName,
+		ServiceString
+	};
+	Q_ENUM(FloatSwitchRoles);
+
+	static FloatSwitchModel* create(QQmlEngine *engine = nullptr, QJSEngine *jsEngine = nullptr);
+	explicit FloatSwitchModel(QObject *parent);
+
+	QVariant data(const QModelIndex& index, int role) const override;
+	int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+
+	Q_INVOKABLE void addNotification(quint32 notificationModelId, const QString &deviceName, const QString &serviceString);
+	Q_INVOKABLE void updateNotification(quint32 notificationModelId, const QString &deviceName);
+	Q_INVOKABLE bool removeNotification(quint32 notificationModelId);
+
+	Q_INVOKABLE QVariant getData(int row, int role);
+
+	Q_SIGNALS:
+	void countChanged();
+
+protected:
+	QHash<int, QByteArray> roleNames() const override;
+
+private:
+	QVector<floatswitchData> m_data;
+};
 
 } /* VenusOS */
 

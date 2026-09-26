@@ -4,13 +4,14 @@ import Victron.VenusOS
 
 Item {
     id: root
+    required property string serviceString
+    required property string deviceName
 
     required property Item fillTarget
     required property string imgsource
     required property var imgCoordsScaling
     required property var btnCoordsScaling
 
-    required property string service
     required property real img_width
     
     anchors.fill: fillTarget
@@ -45,7 +46,7 @@ Item {
             anchors.fill: parent
 
             onClicked: {
-                console.log("Float Switch ", root.service, " Clicked")
+                console.log("Float Switch ", root.serviceString, " Clicked")
             }
         }
 
@@ -95,7 +96,7 @@ Item {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: console.log("Float Switch", root.service, "clicked")
+                onClicked: console.log(root.deviceName, " clicked")
             }
 
         }

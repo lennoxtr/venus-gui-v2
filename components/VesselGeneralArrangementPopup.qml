@@ -29,10 +29,10 @@ Popup {
     })
 
     readonly property var acknowledgeButtonLocationsScaling: ({
-        "com.victronenergy.digitalinput.input_1":   { x: 0.75, y: 0.9},
-        "com.victronenergy.digitalinput.input_2":  { x: 0.55, y: 0.15},
-        "com.victronenergy.digitalinput.input_3":     { x: 0.28, y: 0.9},
-        "com.victronenergy.digitalinput.input_4":     { x: 0.2, y: 0.15}
+        "com.victronenergy.digitalinput.input_1":   { x: 0.75, y: 0.92},
+        "com.victronenergy.digitalinput.input_2":  { x: 0.55, y: 0.1},
+        "com.victronenergy.digitalinput.input_3":     { x: 0.28, y: 0.92},
+        "com.victronenergy.digitalinput.input_4":     { x: 0.2, y: 0.1}
     })
 
     background: Rectangle {
@@ -55,23 +55,19 @@ Popup {
     }
 
     Repeater {
-        model: [
-            "com.victronenergy.digitalinput.input_1",
-            "com.victronenergy.digitalinput.input_2",
-            "com.victronenergy.digitalinput.input_3",
-            "com.victronenergy.digitalinput.input_4"
-        ]
+        model: FloatSwitchModel
  
-
         delegate: FloatSwitchIcon {
-            required property string modelData
+            required property string serviceString
             fillTarget: background
             imgsource: "qrc:/images/float_switch.png"
-            imgCoordsScaling: root.floatSwitchLocationsScaling[modelData] || ({ x: 0, y: 0 })
-            btnCoordsScaling: root.acknowledgeButtonLocationsScaling[modelData] || ({ x: 0, y: 0 })
-
-            service: modelData
             img_width: 0.05 *  root.width
+            
+            imgCoordsScaling: root.floatSwitchLocationsScaling[serviceString] || ({ x: 0, y: 0 })
+            btnCoordsScaling: root.acknowledgeButtonLocationsScaling[serviceString] || ({ x: 0, y: 0 })
+            
+            serviceString: model.serviceString
+            deviceName: model.deviceName
         }
     }
 }

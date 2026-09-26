@@ -21,45 +21,77 @@ Item {
 		function onAdded(modelId) {
 			let entry = NotificationModel.get(modelId)
 			if (!entry.acknowledged) {
-				ToastModel.addNotification(
+				if (!entry.service.contains("digitalinput")) {
+					ToastModel.addNotification(
 						modelId,
 						entry.type,
-						"" + entry.deviceName + "\n" + entry.description)
+						"" + entry.deviceName + "\n" + entry.description
+					)
+				} else {
+					FloatSwitchModel.addNotification(
+						modelId,
+						entry.deviceName,
+						entry.service
+					)
+				}
 			}
 		}
 
 		function onChanged(modelId, roles) {
 			let entry = NotificationModel.get(modelId)
-			if (roles.indexOf(NotificationModel.NotificationRoles.Acknowledged) >= 0) {
-				if (entry.acknowledged) {
-					ToastModel.removeNotification(modelId)
-				} else {
-					// because Notification slots are recycled, the acknowledged value
-					// for "new" notifications residing in recycled slots can be updated
-					// after its active value becomes true.
-					if (!entry.acknowledged) {
-						ToastModel.addNotification(
-								modelId,
-								entry.type,
+			if (!entry.service.contains("digitalinput")) {
+				if (roles.indexOf(NotificationModel.NotificationRoles.Acknowledged) >= 0) {
+					if (entry.acknowledged) {
+						ToastModel.removeNotification(modelId)
+					} else {
+						// because Notification slots are recycled, the acknowledged value
+						// for "new" notifications residing in recycled slots can be updated
+						// after its active value becomes true.
+						if (!entry.acknowledged) {
+							ToastModel.addNotification(
+									modelId,
+									entry.type,
+									"" + entry.deviceName + "\n" + entry.description)
+						}
+					}
+				} else if (roles.indexOf(NotificationModel.NotificationRoles.Type) >= 0) {
+					// replace the toast with one of the correct type.
+					if (ToastModel.removeNotification(modelId)) {
+						ToastModel.addNotification(modelId, entry.type,
 								"" + entry.deviceName + "\n" + entry.description)
 					}
+				} else if (roles.indexOf(NotificationModel.NotificationRoles.Description) >= 0
+						|| roles.indexOf(NotificationModel.NotificationRoles.DeviceName) >= 0) {
+					// update the text in the toast.
+					let text = "" + entry.deviceName + "\n" + entry.description
+					ToastModel.updateNotification(modelId, text)
 				}
-			} else if (roles.indexOf(NotificationModel.NotificationRoles.Type) >= 0) {
-				// replace the toast with one of the correct type.
-				if (ToastModel.removeNotification(modelId)) {
-					ToastModel.addNotification(modelId, entry.type,
-							"" + entry.deviceName + "\n" + entry.description)
+			} else {
+				if (roles.indexOf(NotificationModel.NotificationRoles.Acknowledged) >= 0) {
+					if (entry.acknowledged) {
+						FloatSwitchModel.removeNotification(modelId)
+					} else {
+						// because Notification slots are recycled, the acknowledged value
+						// for "new" notifications residing in recycled slots can be updated
+						// after its active value becomes true.
+						if (!entry.acknowledged) {
+							FloatSwitchModel.addNotification(
+									modelId,
+									entry.deviceName,
+									entry.service)
+						}
+					} 
+				} else if (roles.indexOf(NotificationModel.NotificationRoles.DeviceName) >= 0) {
+					// update the text in the notification
+					let text = "" + entry.deviceName + "\n"
+					FloatSwitchModel.updateNotification(modelId, text)
 				}
-			} else if (roles.indexOf(NotificationModel.NotificationRoles.Description) >= 0
-					|| roles.indexOf(NotificationModel.NotificationRoles.DeviceName) >= 0) {
-				// update the text in the toast.
-				let text = "" + entry.deviceName + "\n" + entry.description
-				ToastModel.updateNotification(modelId, text)
 			}
 		}
 
 		function onRemoved(modelId) {
 			ToastModel.removeNotification(modelId)
+			FloatSwitchModel.removeNotification(modelId)
 		}
 	}
 
@@ -131,10 +163,6 @@ Item {
 			height: view.height
 			opacity: 1.0
 
-			// Custom for Vessel Float Switch Alarm
-			readonly property bool isFloatSwitchAlarm: NotificationModel.activeFloatSwitchAlarms > 0
-
-
 			Behavior on opacity {
 				enabled: root.animationEnabled
 				OpacityAnimator { duration: 200 }
@@ -143,17 +171,12 @@ Item {
 			Component.onCompleted: checkIndex()
 			onIndexChanged: checkIndex()
 			function checkIndex() {
-				if (!isFloatSwitchAlarm) {
-					toastContainer.opacity = index === 0 ? 1.0 : 0.0
-					if (index === 0 && autoCloseInterval > 0) {
-						// our index is zero, so we're the visible toast.
-						// check to see if we need to autoclose.
-						autoCloseTimer.interval = autoCloseInterval
-						autoCloseTimer.start()
-					}
-				} else {
-					console.log("Showing floatswitch alarm")
-					toastContainer.opacity = 1.0
+				toastContainer.opacity = index === 0 ? 1.0 : 0.0
+				if (index === 0 && autoCloseInterval > 0) {
+					// our index is zero, so we're the visible toast.
+					// check to see if we need to autoclose.
+					autoCloseTimer.interval = autoCloseInterval
+					autoCloseTimer.start()
 				}
 			}
 
@@ -163,7 +186,6 @@ Item {
 			}
 
 			ToastNotification {
-				visible: !toastContainer.isFloatSwitchAlarm
 				y: Theme.screenSize === Theme.Portrait ? 0 : parent.height - height
 
 				height: implicitHeight
