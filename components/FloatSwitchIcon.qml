@@ -12,7 +12,6 @@ Item {
 
     required property string service
     required property real img_width
-    required property real img_height
     
     anchors.fill: fillTarget
 
@@ -35,6 +34,37 @@ Item {
             }
         }
 
+        Rectangle {
+            id: pulse
+            z: -2                                   
+            anchors.centerIn: parent
+            width: circle.width                    
+            height: width
+            radius: width / 2
+            color: "transparent"
+            border.color: Theme.color_critical_background
+            border.width: 3
+            antialiasing: true
+
+            ParallelAnimation {
+                running: pulse.visible
+                loops: Animation.Infinite
+
+                NumberAnimation {
+                    target: pulse; property: "scale"
+                    from: 1.0; to: 1.8
+                    duration: 1200
+                    easing.type: Easing.OutCubic
+                }
+                NumberAnimation {
+                    target: pulse; property: "opacity"
+                    from: 0.9; to: 0.0
+                    duration: 1200
+                    easing.type: Easing.OutCubic
+                }
+            }
+        }
+
 
         Rectangle {
             anchors.centerIn: parent
@@ -42,6 +72,7 @@ Item {
             height: width
             radius: width / 2
             color: "white"
+            z: -1
         }
     }
 
