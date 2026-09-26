@@ -1266,7 +1266,6 @@ void FloatSwitchModel::updateNotification(quint32 notificationModelId, const QSt
 	for (qsizetype i = 0; i < m_data.size(); ++i) {
 		if (m_data[i].notificationModelId == notificationModelId) {
 			m_data[i].deviceName = deviceName;
-			m_data[i].serviceString = serviceString;
 			Q_EMIT dataChanged(createIndex(i, 0), createIndex(i, 0), QList<int>() << static_cast<int>(FloatSwitchModel::FloatSwitchRoles::DeviceName));
 			return;
 		}
