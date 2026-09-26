@@ -60,9 +60,11 @@ Popup {
         delegate: FloatSwitchIcon {
             required property string serviceString
             required property string deviceName
+            required property string notificationModelId
 
             floatswitchserviceString: serviceString
             floatswitchdeviceName: deviceName
+            floatswitchnotificationModelId: notificationModelId
             
             fillTarget: background
             imgsource: "qrc:/images/float_switch.png"

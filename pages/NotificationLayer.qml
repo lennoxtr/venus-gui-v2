@@ -19,6 +19,7 @@ Item {
 		target: NotificationModel
 
 		function onAdded(modelId) {
+			console.log("onAdded Triggered")
 			let entry = NotificationModel.get(modelId)
 			if (!entry.acknowledged) {
 				if (!entry.service.contains("digitalinput")) {
@@ -38,6 +39,8 @@ Item {
 		}
 
 		function onChanged(modelId, roles) {
+			console.log("onChanged Triggered")
+
 			let entry = NotificationModel.get(modelId)
 			if (!entry.service.includes("digitalinput")) {
 				if (roles.indexOf(NotificationModel.NotificationRoles.Acknowledged) >= 0) {
@@ -90,6 +93,7 @@ Item {
 		}
 
 		function onRemoved(modelId) {
+			console.log("onRemoved Triggered")
 			ToastModel.removeNotification(modelId)
 			FloatSwitchModel.removeNotification(modelId)
 		}

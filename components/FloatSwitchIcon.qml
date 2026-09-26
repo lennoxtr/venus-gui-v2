@@ -6,6 +6,7 @@ Item {
     id: root
     property string floatswitchserviceString
     property string floatswitchdeviceName
+    property int floatswitchnotificationModelId
 
     required property Item fillTarget
     required property string imgsource
@@ -125,7 +126,8 @@ Item {
 	    // ensure highlight border can be seen against critical backgroundColor
 	    KeyNavigationHighlight.margins: -(4 * Theme.geometry_button_border_width)
         onClicked: {
-            console.log("Button Clicked")
+            console.log("Acknowledged ", root.floatswitchdeviceName)
+            NotificationModel.acknowledge(root.floatswitchnotificationModelId)
         }
     }
 }
