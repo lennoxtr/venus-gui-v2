@@ -4,8 +4,8 @@ import Victron.VenusOS
 
 Item {
     id: root
-    required property string serviceString
-    required property string deviceName
+    readonly property string floatswitchserviceString
+    readonly property string floatswitchdeviceName
 
     required property Item fillTarget
     required property string imgsource
@@ -46,7 +46,7 @@ Item {
             anchors.fill: parent
 
             onClicked: {
-                console.log("Float Switch ", root.serviceString, " Clicked")
+                console.log("Float Switch ", root.floatswitchdeviceName, " Clicked")
             }
         }
 
@@ -93,12 +93,6 @@ Item {
 
             border.color: "red"
             border.width: 3
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: console.log(root.deviceName, " clicked")
-            }
-
         }
     }
 
