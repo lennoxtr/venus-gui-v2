@@ -52,13 +52,13 @@ Item {
                 NumberAnimation {
                     target: pulse; property: "scale"
                     from: 1.0; to: 1.8
-                    duration: 1000
+                    duration: 800
                     easing.type: Easing.OutCubic
                 }
                 NumberAnimation {
                     target: pulse; property: "opacity"
                     from: 0.9; to: 0.0
-                    duration: 1000
+                    duration: 800
                     easing.type: Easing.OutCubic
                 }
             }
@@ -74,6 +74,9 @@ Item {
             color: "white"
             z: -1
 
+            border.color: "red"
+            border.width: 3
+
             MouseArea {
                 anchors.fill: parent
                 onClicked: console.log("Float Switch", root.service, "clicked")
@@ -87,7 +90,7 @@ Item {
 
         width: implicitWidth
         height: implicitHeight
-        radius: height / 2
+        radius: height / 4
                 
         leftInset: Theme.geometry_statusBar_spacing / 2
 		rightInset: Theme.geometry_statusBar_spacing / 2
