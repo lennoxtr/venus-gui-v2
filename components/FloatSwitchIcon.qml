@@ -103,13 +103,13 @@ Item {
         height: implicitHeight
         radius: Theme.geometry_toastNotification_radius * 2
                 
-        leftInset: Theme.geometry_statusBar_spacing / 2
-		rightInset: Theme.geometry_statusBar_spacing / 2
+        //leftInset: Theme.geometry_statusBar_spacing / 2
+		//rightInset: Theme.geometry_statusBar_spacing / 2
 		topInset: Theme.geometry_statusBar_spacing
 		bottomInset: Theme.geometry_statusBar_spacing
 
-	    leftPadding: leftInset + Theme.geometry_silenceAlarmButton_horizontalPadding + 10
-	    rightPadding: rightInset + Theme.geometry_silenceAlarmButton_horizontalPadding
+	    leftPadding: Theme.geometry_silenceAlarmButton_horizontalPadding
+	    rightPadding: Theme.geometry_silenceAlarmButton_horizontalPadding
 	    defaultBackgroundHeight: Theme.geometry_notificationsPage_snoozeButton_height
 	            
         flat: false

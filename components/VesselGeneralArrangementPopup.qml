@@ -70,9 +70,6 @@ Popup {
             
             imgCoordsScaling: root.floatSwitchLocationsScaling[serviceString] || ({ x: 0, y: 0 })
             btnCoordsScaling: root.acknowledgeButtonLocationsScaling[serviceString] || ({ x: 0, y: 0 })
-            
-            serviceString: model.serviceString
-            deviceName: model.deviceName
         }
     }
 }
