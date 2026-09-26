@@ -39,7 +39,7 @@ Item {
 
 		function onChanged(modelId, roles) {
 			let entry = NotificationModel.get(modelId)
-			if (!entry.service.contains("digitalinput")) {
+			if (!entry.service.includes("digitalinput")) {
 				if (roles.indexOf(NotificationModel.NotificationRoles.Acknowledged) >= 0) {
 					if (entry.acknowledged) {
 						ToastModel.removeNotification(modelId)
