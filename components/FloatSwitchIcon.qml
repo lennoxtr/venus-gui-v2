@@ -4,8 +4,8 @@ import Victron.VenusOS
 
 Item {
     id: root
-    readonly property string floatswitchserviceString
-    readonly property string floatswitchdeviceName
+    property string floatswitchserviceString
+    property string floatswitchdeviceName
 
     required property Item fillTarget
     required property string imgsource
