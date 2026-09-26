@@ -109,7 +109,7 @@ Item {
 		bottomInset: Theme.geometry_statusBar_spacing
 
 	    leftPadding: Theme.geometry_silenceAlarmButton_horizontalPadding
-	    rightPadding: Theme.geometry_silenceAlarmButton_horizontalPadding
+	    //rightPadding: Theme.geometry_silenceAlarmButton_horizontalPadding
 	    defaultBackgroundHeight: Theme.geometry_notificationsPage_snoozeButton_height
 	            
         flat: false
@@ -120,8 +120,7 @@ Item {
         x: root.btnCoordsScaling.x * root.width - width/2
         y: root.btnCoordsScaling.y * root.height - height/2
 	            
-        // TODO: change text
-        text: qsTr("Fl Switch ENGINE AFT")
+        text: root.floatswitchdeviceName
 
 	    // ensure highlight border can be seen against critical backgroundColor
 	    KeyNavigationHighlight.margins: -(4 * Theme.geometry_button_border_width)
