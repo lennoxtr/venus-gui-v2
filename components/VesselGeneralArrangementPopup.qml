@@ -58,7 +58,6 @@ Popup {
         model: FloatSwitchModel
  
         delegate: FloatSwitchIcon {
-            required property string serviceString
             fillTarget: background
             imgsource: "qrc:/images/float_switch.png"
             img_width: 0.05 *  root.width
