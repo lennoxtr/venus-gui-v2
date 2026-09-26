@@ -59,6 +59,7 @@ set (VictronVenusOS_QML_MODULE_SOURCES
     components/GeneratorManualControlButton.qml
     components/GensetStartStop1Finder.qml
     components/FlatListItemSeparator.qml
+    components/FloatSwitchIcon.qml
     components/GeneratorIconLabel.qml
     components/GradientListView.qml
     components/GsmStatusIcon.qml

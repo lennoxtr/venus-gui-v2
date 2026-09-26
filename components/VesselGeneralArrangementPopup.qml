@@ -63,67 +63,15 @@ Popup {
         ]
  
 
-        delegate: Item {
-            id: floatSwitchIndicator
+        delegate: FloatSwitchIcon {
+            required property string modelData
+            fillTarget: background
+            imgsource: "qrc:/images/float_switch.png"
+            imgCoordsScaling: root.floatSwitchLocationsScaling[modelData] || ({ x: 0, y: 0 })
+            btnCoordsScaling: root.acknowledgeButtonLocationsScaling[modelData] || ({ x: 0, y: 0 })
 
-            anchors.fill: background
-            readonly property var imgCoordsScaling: root.floatSwitchLocationsScaling[modelData] || { x: 0, y: 0 }
-            readonly property var btnCoordsScaling: root.acknowledgeButtonLocationsScaling[modelData] || { x: 0, y: 0 }
-
-            Image {
-                id: floatswitchimage
-                source: "qrc:/images/float_switch.png"
-                width: 0.05 *  root.width
-                height: floatswitchimage.width
-                fillMode: Image.PreserveAspectFit
-                mipmap: true
-
-                x: imgCoordsScaling.x * background.width - width/2
-                y: imgCoordsScaling.y * background.height - height/2
-
-                MouseArea {
-                    anchors.fill: parent
-
-                    onClicked: {
-                        console.log("Float Switch ", modelData, " Clicked")
-                    }
-                }
-            }
-
-            Button {
-                id: floatSwitchButton
-
-                width: implicitWidth
-                height: implicitHeight
-                radius: height / 2
-                
-                leftInset: Theme.geometry_statusBar_spacing / 2
-		        rightInset: Theme.geometry_statusBar_spacing / 2
-		        topInset: Theme.geometry_statusBar_spacing
-		        bottomInset: Theme.geometry_statusBar_spacing
-
-	            leftPadding: leftInset + Theme.geometry_silenceAlarmButton_horizontalPadding + 10
-	            rightPadding: rightInset + Theme.geometry_silenceAlarmButton_horizontalPadding
-	            defaultBackgroundHeight: Theme.geometry_notificationsPage_snoozeButton_height
-	            
-                flat: false
-	            backgroundColor: Theme.color_critical_background
-	            borderWidth: 0
-	            icon.source: "qrc:/images/icon_alarm_snooze_24.svg"
-
-                x: btnCoordsScaling.x * background.width - width/2
-                y: btnCoordsScaling.y * background.height - height/2
-	            
-                // TODO: change text
-                text: qsTr("Fl Switch ENGINE AFT")
-
-	            // ensure highlight border can be seen against critical backgroundColor
-	            KeyNavigationHighlight.margins: -(4 * Theme.geometry_button_border_width)
-                onClicked: {
-                        console.log("Button Clicked")
-                    }
-
-            }
+            service: modelData
+            img_width: 0.05 *  root.width
         }
     }
 }
