@@ -15,12 +15,28 @@ Item {
     
     anchors.fill: fillTarget
 
+    Rectangle {
+        id: buttonConnector
+
+        // Circle center
+        readonly property real cx: floatSwitchImage.x + floatSwitchImage.width / 2
+        readonly property real cy: floatSwitchImage.y + floatSwitchImage.height / 2
+        readonly property real centerOfButton_y: floatSwitchButton.y + floatSwitchButton.height / 2
+
+        width: 5
+        x: cx  - width / 2
+        y: Math.min(cy, centerOfButton_y)
+        height: Math.abs(centerOfButton_y - cy)
+        color: Theme.color_critical_background
+        antialiasing: true
+    }
+
     Image {
-        id: floatswitchimage
+        id: floatSwitchImage
         source: root.imgsource
 
         width: img_width
-        height: floatswitchimage.width
+        height: floatSwitchImage.width
         x: root.imgCoordsScaling.x * root.width - width/2
         y: root.imgCoordsScaling.y * root.height - height/2
         mipmap: true
