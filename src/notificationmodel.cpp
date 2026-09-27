@@ -11,6 +11,8 @@
 
 using namespace Victron::VenusOS;
 
+NotificationModel *NotificationModel::s_instance = nullptr;
+
 namespace {
 
 VeQItem *notificationsItem()
@@ -112,14 +114,22 @@ int NotificationModel::unacknowledgedFloatSwitchAlarms() const
 }
 
 NotificationModel* NotificationModel::create(QQmlEngine *engine, QJSEngine *)
+{	
+	NotificationModel *model = instance();
+    QJSEngine::setObjectOwnership(model, QJSEngine::CppOwnership);
+    return model;
+}
+
+NotificationModel *NotificationModel::instance()
 {
-	static NotificationModel* instance = new NotificationModel(engine);
-	return instance;
+    if (!s_instance)
+        s_instance = new NotificationModel(nullptr);
+    return s_instance;
 }
 
 NotificationModel::NotificationModel(QObject *parent)
 	: QAbstractListModel(parent)
-{
+{	
 	BackendConnection *backend = BackendConnection::create();
 	if (backend) {
 		connect(backend, &BackendConnection::stateChanged,
@@ -1222,13 +1232,13 @@ int ToastModel::rowCount(const QModelIndex &) const
 }
 
 void ToastModel::init() {
-	QVector<notificationData> existing_notification = NotificationModel::instance()-> get_notifications();
+	QVector<notificationData> existing_notification = NotificationModel::instance()->get_notifications();
 	
 	beginResetModel();
 	m_data.clear();
 
 	for (const notificationData& notification : existing_notification) {
-		if (!notification.active)
+		if (!notification.acknowledged)
             continue;
 
         if (notification.service.contains(QStringLiteral("digitalinput")))
@@ -1236,10 +1246,10 @@ void ToastModel::init() {
 		
 		toastData toast;
 		toast.modelId = ++m_modelId;
-		toast.notificationModelId = notification.notificationModelId;
+		toast.notificationModelId = notification.modelId;
 		toast.type = notification.type;
 		toast.description = notification.description;
-		m_data.insert(toast);
+		m_data.append(toast);
 
 	}
 	endResetModel();
@@ -1350,21 +1360,17 @@ QVariant FloatSwitchModel::data(const QModelIndex& index, int role) const
 
 int FloatSwitchModel::rowCount(const QModelIndex &) const
 {	
-	if (parent.isValid()) {
-        return 0; 
-    }
-
 	return m_data.count();
 }
 
 void FloatSwitchModel::init() {
-	QVector<notificationData> existing_notification = NotificationModel::instance()-> get_notifications();
+	QVector<notificationData> existing_notification = NotificationModel::instance()->get_notifications();
 	
 	beginResetModel();
 	m_data.clear();
 
 	for (const notificationData& notification : existing_notification) {
-		if (!notification.active)
+		if (!notification.acknowledged)
             continue;
 
         if (!notification.service.contains(QStringLiteral("digitalinput")))

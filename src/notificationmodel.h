@@ -149,6 +149,7 @@ public:
 	Q_ENUM(NotificationRoles);
 
 	static NotificationModel* create(QQmlEngine *engine = nullptr, QJSEngine *jsEngine = nullptr);
+	static NotificationModel *instance();
 	explicit NotificationModel(QObject *parent);
 
 	QVariant data(const QModelIndex& index, int role) const override;
@@ -197,6 +198,7 @@ protected:
 	QHash<int, QByteArray> roleNames() const override;
 
 private:
+	static NotificationModel* s_instance;
 	void init();
 	void reset();
 	void handleBackendStateChanged();
