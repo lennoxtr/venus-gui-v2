@@ -101,16 +101,13 @@ void NotificationSlot::acknowledge()
 
 int NotificationModel::unacknowledgedFloatSwitchAlarms() const
 {	
-	qDebug() << "unacknowledgedFloatSwitchAlarms() called";
     int count = 0;
 
     for (int i = 0; i < m_data.size(); i++) {
-		qDebug() << "Service: " << m_data[i].service;
 		if (!m_data[i].acknowledged && m_data[i].service.contains("digitalinput")) {
 			count += 1;
 		}
 	}
-	qDebug() << "Count: " << count;
     return count;
 }
 

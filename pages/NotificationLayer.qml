@@ -22,13 +22,15 @@ Item {
 			console.log("onAdded Triggered")
 			let entry = NotificationModel.get(modelId)
 			if (!entry.acknowledged) {
-				if (!entry.service.contains("digitalinput")) {
+				if (!entry.service.includes("digitalinput")) {
+					console.log("Added to ToastModel")
 					ToastModel.addNotification(
 						modelId,
 						entry.type,
 						"" + entry.deviceName + "\n" + entry.description
 					)
 				} else {
+					console.log("Added to FloatSwitchModel")
 					FloatSwitchModel.addNotification(
 						modelId,
 						entry.deviceName,
@@ -43,6 +45,7 @@ Item {
 
 			let entry = NotificationModel.get(modelId)
 			if (!entry.service.includes("digitalinput")) {
+				console.log("Not Float Switch")
 				if (roles.indexOf(NotificationModel.NotificationRoles.Acknowledged) >= 0) {
 					if (entry.acknowledged) {
 						ToastModel.removeNotification(modelId)
@@ -70,14 +73,18 @@ Item {
 					ToastModel.updateNotification(modelId, text)
 				}
 			} else {
-				if (roles.indexOf(NotificationModel.NotificationRoles.Acknowledged) >= 0) {
+				console.log("Is Float Switch")
+				if (roles.indexOf(NotificationModel.NotificationRoles.Acknowledged) >= 0) { //acknowq status changed
 					if (entry.acknowledged) {
+						console.log("FS changed to Acknowledged")
 						FloatSwitchModel.removeNotification(modelId)
 					} else {
 						// because Notification slots are recycled, the acknowledged value
 						// for "new" notifications residing in recycled slots can be updated
 						// after its active value becomes true.
+						console.log("Notification Slot recycled")
 						if (!entry.acknowledged) {
+							console.log("FS changed to NOT Acknowledged")
 							FloatSwitchModel.addNotification(
 									modelId,
 									entry.deviceName,
@@ -86,7 +93,8 @@ Item {
 					} 
 				} else if (roles.indexOf(NotificationModel.NotificationRoles.DeviceName) >= 0) {
 					// update the text in the notification
-					let text = "" + entry.deviceName + "\n"
+					let text = "" + entry.deviceName
+					console.log("FS changed deviceName")
 					FloatSwitchModel.updateNotification(modelId, text)
 				}
 			}

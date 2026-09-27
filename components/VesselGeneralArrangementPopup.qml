@@ -60,7 +60,7 @@ Popup {
         delegate: FloatSwitchIcon {
             required property string serviceString
             required property string deviceName
-            required property string notificationModelId
+            required property int notificationModelId
 
             floatswitchserviceString: serviceString
             floatswitchdeviceName: deviceName
