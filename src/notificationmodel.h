@@ -162,7 +162,7 @@ public:
 	int unacknowledgedInfos() const { return m_unacknowledgedInfos; }
 
 	int unacknowledgedFloatSwitchAlarms() const;
-	QVector<notificationData>& get_notifications() const { return m_data; }
+	const QVector<notificationData>& get_notifications() const { return m_data; }
 
 	Q_INVOKABLE void acknowledge(quint32 modelId);
 	Q_INVOKABLE void acknowledgeRow(int row);
