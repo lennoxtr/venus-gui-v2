@@ -1221,6 +1221,31 @@ int ToastModel::rowCount(const QModelIndex &) const
 	return m_data.count();
 }
 
+void ToastModel::init() {
+	QVector<notificationData> existing_notification = NotificationModel::instance()-> get_notifications();
+	
+	beginResetModel();
+	m_data.clear();
+
+	for (const notificationData& notification : existing_notification) {
+		if (!notification.active)
+            continue;
+
+        if (notification.service.contains(QStringLiteral("digitalinput")))
+            continue;
+		
+		toastData toast;
+		toast.modelId = ++m_modelId;
+		toast.notificationModelId = notification.notificationModelId;
+		toast.type = notification.type;
+		toast.description = notification.description;
+		m_data.insert(toast);
+
+	}
+	endResetModel();
+    Q_EMIT countChanged();
+}
+
 QHash<int, QByteArray> ToastModel::roleNames() const
 {
 	static const QHash<int, QByteArray> roles {
@@ -1324,8 +1349,35 @@ QVariant FloatSwitchModel::data(const QModelIndex& index, int role) const
 }
 
 int FloatSwitchModel::rowCount(const QModelIndex &) const
-{
+{	
+	if (parent.isValid()) {
+        return 0; 
+    }
+
 	return m_data.count();
+}
+
+void FloatSwitchModel::init() {
+	QVector<notificationData> existing_notification = NotificationModel::instance()-> get_notifications();
+	
+	beginResetModel();
+	m_data.clear();
+
+	for (const notificationData& notification : existing_notification) {
+		if (!notification.active)
+            continue;
+
+        if (!notification.service.contains(QStringLiteral("digitalinput")))
+            continue;
+		
+		floatswitchData item;
+        item.notificationModelId = notification.modelId;
+        item.deviceName = notification.deviceName;
+        item.serviceString = notification.service;
+		m_data.append(item);
+	}
+	endResetModel();
+    Q_EMIT countChanged();
 }
 
 QHash<int, QByteArray> FloatSwitchModel::roleNames() const

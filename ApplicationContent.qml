@@ -97,9 +97,8 @@ FocusScope {
 		animationEnabled: Global.animationEnabled
 		Component.onCompleted: {
 			Global.notificationLayer = notificationLayer
-			console.log("Notification Layer Loaded")
-			console.log("NotificationModel count:", NotificationModel.count)
-        	console.log("FloatSwitchModel count:", FloatSwitchModel.count)
+			ToastModel.init()
+			FloatSwitchModel.init()
 		}
 	}
 

@@ -162,6 +162,7 @@ public:
 	int unacknowledgedInfos() const { return m_unacknowledgedInfos; }
 
 	int unacknowledgedFloatSwitchAlarms() const;
+	QVector<notificationData>& get_notifications() const { return m_data; }
 
 	Q_INVOKABLE void acknowledge(quint32 modelId);
 	Q_INVOKABLE void acknowledgeRow(int row);
@@ -288,6 +289,8 @@ public:
 	Q_INVOKABLE void requestDismiss(quint32 modelId);
 	Q_INVOKABLE void requestClose(quint32 modelId);
 
+	Q_INVOKABLE void init();
+
 	Q_INVOKABLE QVariant getData(int row, int role);
 
 Q_SIGNALS:
@@ -343,6 +346,8 @@ public:
 	Q_INVOKABLE void addNotification(quint32 notificationModelId, const QString &deviceName, const QString &serviceString);
 	Q_INVOKABLE void updateNotification(quint32 notificationModelId, const QString &deviceName);
 	Q_INVOKABLE bool removeNotification(quint32 notificationModelId);
+
+	Q_INVOKABLE void init();
 
 	Q_INVOKABLE QVariant getData(int row, int role);
 
